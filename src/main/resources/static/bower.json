@@ -1,0 +1,28 @@
+{
+  "name": "Image Gallery Polymer Components",
+  "version": "0.0.2",
+  "authors": [
+    "hunga@sunyit.edu"
+  ],
+  "description": "Polymer web components for Spring MVC web application Image Gallery",
+  "keywords": [
+    "Polymer",
+    "Web",
+    "Image",
+    "Gallery",
+    "Components",
+    "Custom"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "polymer",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.5"
+  }
+}

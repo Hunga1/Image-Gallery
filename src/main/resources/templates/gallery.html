@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="mobile-web-app-capable" content="yes"/>
+	<title>Images</title>
+	<link rel="stylesheet" href="../static/normalize/normalize.css" th:href="@{/normalize/normalize.css}"/>
+	<link rel="import" href="../polymer/nav-components/gallery-navbar.html" th:href="@{/polymer/nav-components/gallery-navbar.html}"/>
+	<link rel="import" href="../polymer/nav-components/gallery-navbar-tab.html" th:href="@{/polymer/nav-components/gallery-navbar-tab.html}"/>
+	<script src="../polymer/webcomponentsjs/webcomponents.min.js" th:src="@{/polymer/webcomponentsjs/webcomponents.min.js}"></script>
+	<link rel="stylesheet" href="styles.css" th:href="@{/styles.css}"/>
+</head>
+<body>
+	<header>
+		<gallery-navbar>
+			<gallery-navbar-tab><a href="/" th:href="@{/}">Home</a></gallery-navbar-tab>
+			<gallery-navbar-tab><a href="/images" th:href="@{/images}">Images</a></gallery-navbar-tab>
+			<gallery-navbar-tab><a href="/postImages" th:href="@{/postImages}">Post Image</a></gallery-navbar-tab>
+		</gallery-navbar>
+	</header>
+	<main>
+		<h1 class="main-header">Images</h1>
+		<div class="images-container">
+			<table>
+				<tr>
+					<th>Title</th>
+					<th>Image</th>
+					<th>Description</th>
+				</tr>
+				<tr th:each="image : ${images}">
+					<td th:text="${image.title}"></td> 
+					<td><img src="../static/${image.filename}" th:src="@{${image.filename}}"/></td>
+					<td th:text="${image.description}"></td>
+				</tr>
+			</table>
+		</div>
+	</main>
+	<script src="../static/js/gallery.js" th:src="@{/js/gallery.js}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js}"></script>
+</body>
+</html>

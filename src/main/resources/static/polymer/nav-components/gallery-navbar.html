@@ -1,0 +1,29 @@
+<!-- <link rel="import" href="../polymer/polymer.html">
+ -->
+<link rel="import" href="../polymer/polymer.html">
+
+<polymer-element name="gallery-navbar">
+	<template>
+		<style>
+			:host {
+				display: block;
+				position: relative;
+				width: 100%;
+			}
+			.navbar {
+				margin-bottom: 10px;
+				padding: 10px;
+				background-color: #28b1f6;
+			}
+		</style>
+
+		<div class="navbar">
+			<content select="gallery-navbar-tab"></content>
+		</div>
+
+	</template>
+	<script>
+		Polymer({});
+	</script>
+	
+</polymer-element>

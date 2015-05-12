@@ -1,0 +1,65 @@
+/*
+ *  BuildScript
+ *  Purpose: Declare external libraries and add to script's classpath
+ */
+
+buildscript {
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.3.RELEASE")
+	}
+}
+
+/*
+ *  Gradle Plugins
+ *  Purpose: Plugins for java compiling and spring-boot
+ */
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+/*
+ *  JAR Artifact Specifications
+ *  Purpose: Name and version number of application JAR
+ */
+
+jar {
+	baseName = 'image-gallery'
+	version = '0.0.4'
+}
+
+/*
+ *  Repositories
+ *  Purpose: Specify repos to obtain dependencies from
+ */
+
+repositories {
+	mavenCentral()
+}
+
+/*
+ *  Dependencies
+ *  Purpose: List application's dependencies
+ */
+
+dependencies {
+	compile("org.springframework.boot:spring-boot-starter")
+	compile("org.springframework.boot:spring-boot-starter-web")
+	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	compile("org.springframework.boot:spring-boot-starter-data-jpa")
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("com.fasterxml.jackson.core:jackson-databind")
+	compile("com.h2database:h2")
+	testCompile("junit:junit")
+}
+
+/*
+ *  Wrapper Generator
+ *  Purpose: Generate wrapper build script for systems without Gradle installed
+ */
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}

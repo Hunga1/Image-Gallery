@@ -1,0 +1,26 @@
+h1 {
+	color: #d60000;
+	margin-left: 10%;
+}
+
+table {
+	text-align: center;
+	margin: auto;
+}
+
+tr {
+	border: 1px solid #000000;
+}
+
+th, td {
+	padding: 20px;
+}
+
+img {
+	max-width: 300px;
+}
+
+.input-block, input[type="submit"] {
+	display: block;
+	margin: 0px 10% 20px;
+}
