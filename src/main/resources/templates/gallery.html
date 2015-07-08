@@ -31,7 +31,7 @@
 				</tr>
 				<tr th:each="image : ${images}">
 					<td th:text="${image.title}"></td> 
-					<td><img src="../static/${image.filename}" th:src="@{${image.filename}}"/></td>
+					<td><img th:src="@{http://localhost:8080/getImage/} + ${image.id} + @{.jpg}" src="http://localhost:8080/getImage/id.jpg"/></td>
 					<td th:text="${image.description}"></td>
 				</tr>
 			</table>

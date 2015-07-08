@@ -41,4 +41,32 @@ public class ImageServiceImpl implements ImageService {
 
 		return images;
 	}
+
+	@Transactional
+	public Image getImageById(long Id) {
+		Image image = new Image();
+
+		image = imageRepository.getOne(Id);
+
+		return image;
+	}
+
+	public boolean ImageIsJpg(byte[] imageData) {
+		if (imageData[0] == (byte)0xFF && imageData[1] == (byte)0xD8 && imageData[imageData.length - 2] == (byte)0xFF && imageData[imageData.length - 1] == (byte)0xD9) {
+			return true;
+		}
+		else 
+			return false;
+	}
+
+	public boolean ImageIsValidSize(byte[] imageData) {
+		int maxImageSize = 1500000;			// Relocate value to configuration specific place
+
+		if (imageData.length <= maxImageSize) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

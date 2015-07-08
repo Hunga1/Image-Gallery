@@ -16,7 +16,7 @@ public class Image {
 	private String title;
 	private String description;
 
-	@Column(length = 800000)
+	@Column(length = 1500000)
 	private byte[] image;
 
 	private String filename;

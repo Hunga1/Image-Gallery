@@ -25,6 +25,14 @@ public class ImageController {
 	@Autowired
 	private ImageService imageService;
 
+	@RequestMapping(value = "/getImage/{Id}")
+	@ResponseBody
+	public byte[] Images(@PathVariable long Id) {
+		Image image = imageService.getImageById(Id);
+
+		return image.getImage();
+	}
+
 	@RequestMapping(value = "/images", method = RequestMethod.GET)
 	public String showImages(Model model) {
 		List<Image> images = new ArrayList<Image>();
@@ -44,23 +52,41 @@ public class ImageController {
 	public String postImages(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("image") MultipartFile image) {
 
 		if (!image.isEmpty()) {
+
 			try {
 				byte[] imageData = image.getBytes();
 
-				Image imageObject = new Image();
-				imageObject.setTitle(title);
-				imageObject.setDescription(description);
-				imageObject.setImage(imageData);
+				if (imageService.ImageIsJpg(imageData) && imageService.ImageIsValidSize(imageData)) {
+					Image imageObject = new Image();
 
-				imageService.saveImage(imageObject);
+					imageObject.setTitle(title);
+					imageObject.setDescription(description);
+					imageObject.setImage(imageData);
+					imageService.saveImage(imageObject);
 
-				System.out.println("success!");
+					/* Debugging */
+					System.out.println("success!");
+					/* End of Debugging */
+				}
+				/* Debugging */
+				else {
+					if (imageService.ImageIsValidSize(imageData) == false) {
+						System.out.println("Image is not valid size!");
+					}
+					if (imageService.ImageIsJpg(imageData) == false) {
+						System.out.println("Image is not a jpeg!");
+					}
+				}
+				/* End of Debugging */
+
 			} catch (Exception e) {
 				System.out.println("You have failed to upload " + title + ": " + e.getMessage());
 			}
 		}
+		/* Debugging */
 		else
 			System.out.println("Empty File!");
+		/* End of Debugging */
 
 		return "postImages";
 	}
